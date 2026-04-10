@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la *.docx)",
+      "Bash(cp \"1.LIST OF FIDA NIGERIA, PHILOMATH UNIVERSITY STUDENT CHAPTER MEMBERS  2.docx\" fida.docx)",
+      "Bash(unzip -p fida.docx word/document.xml)",
+      "Bash(python -c ':*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git fetch:*)"
+    ]
+  }
+}

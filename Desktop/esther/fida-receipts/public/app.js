@@ -13,8 +13,8 @@ const state = {
   member: null,   // from lookup
   matric_no: '',
   level: '',
-  amountPreview: '—',
-  eventName: 'FIDA 2026 Dinner',
+  amountPreview: '1500',
+  eventName: 'FIDA Dues',
 };
 
 function show(step) {
