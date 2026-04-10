@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIDA 2026 Dinner — Payment Receipt</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="brand">
+        <h1>FIDA Nigeria</h1>
+        <p class="subtitle">Philomath University Student Chapter</p>
+      </header>
+
+      <!-- STEP 1: email lookup -->
+      <section id="step-lookup" class="card">
+        <h2>Confirm your payment</h2>
+        <p class="muted">Enter the email you registered with to get your receipt.</p>
+        <form id="lookup-form">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            inputmode="email"
+            placeholder="you@example.com"
+          />
+          <button type="submit" class="primary">Continue</button>
+        </form>
+        <p id="lookup-error" class="error" hidden></p>
+      </section>
+
+      <!-- STEP 2: existing member — fill matric & level -->
+      <section id="step-existing" class="card" hidden>
+        <h2>Hi <span id="existing-name"></span> 👋</h2>
+        <p class="muted">Please confirm your details and fill in the missing fields.</p>
+        <form id="existing-form">
+          <div class="field">
+            <label>Name</label>
+            <input id="ex-name" type="text" readonly />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input id="ex-email" type="text" readonly />
+          </div>
+          <div class="field">
+            <label for="ex-matric">Matric Number *</label>
+            <input id="ex-matric" name="matric_no" required maxlength="40" placeholder="e.g. PHIL/LAW/22/001" />
+          </div>
+          <div class="field">
+            <label for="ex-level">Level *</label>
+            <input id="ex-level" name="level" required maxlength="20" placeholder="e.g. 300" />
+          </div>
+          <button type="submit" class="primary">Continue to payment</button>
+          <button type="button" class="secondary" data-back="lookup">Back</button>
+        </form>
+      </section>
+
+      <!-- STEP 2b: new member registration -->
+      <section id="step-register" class="card" hidden>
+        <h2>Register new member</h2>
+        <p class="muted">Your email isn't in our records. Fill in your details to continue.</p>
+        <form id="register-form">
+          <div class="field">
+            <label for="reg-name">Full name *</label>
+            <input id="reg-name" name="name" required maxlength="120" />
+          </div>
+          <div class="field">
+            <label for="reg-email">Email *</label>
+            <input id="reg-email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="reg-phone">Phone *</label>
+            <input id="reg-phone" name="phone" type="tel" required maxlength="20" />
+          </div>
+          <div class="field">
+            <label for="reg-matric">Matric Number *</label>
+            <input id="reg-matric" name="matric_no" required maxlength="40" />
+          </div>
+          <div class="field">
+            <label for="reg-level">Level *</label>
+            <input id="reg-level" name="level" required maxlength="20" />
+          </div>
+          <button type="submit" class="primary">Register &amp; continue</button>
+          <button type="button" class="secondary" data-back="lookup">Back</button>
+        </form>
+      </section>
+
+      <!-- STEP 3: payment confirmation -->
+      <section id="step-confirm" class="card" hidden>
+        <h2>Confirm payment</h2>
+        <div class="summary">
+          <div><span>Name</span><strong id="sum-name"></strong></div>
+          <div><span>Matric No</span><strong id="sum-matric"></strong></div>
+          <div><span>Level</span><strong id="sum-level"></strong></div>
+          <div><span>Event</span><strong id="sum-event"></strong></div>
+          <div class="amount"><span>Amount</span><strong id="sum-amount"></strong></div>
+        </div>
+        <p class="muted">
+          Have you handed your cash to the Financial Secretary? Tap <b>Confirm Payment</b> only after.
+        </p>
+        <button id="confirm-btn" class="primary">Confirm Payment</button>
+        <button type="button" class="secondary" data-back="lookup">Cancel</button>
+        <p id="confirm-error" class="error" hidden></p>
+      </section>
+
+      <!-- STEP 4: receipt -->
+      <section id="step-receipt" class="card receipt" hidden>
+        <div class="receipt-header">
+          <h2>Payment Receipt</h2>
+          <span class="badge">Payment Acknowledged ✓</span>
+        </div>
+        <div class="receipt-body">
+          <div class="row"><span>Receipt No</span><strong id="r-no"></strong></div>
+          <div class="row"><span>Name</span><strong id="r-name"></strong></div>
+          <div class="row"><span>Matric No</span><strong id="r-matric"></strong></div>
+          <div class="row"><span>Level</span><strong id="r-level"></strong></div>
+          <div class="row"><span>Amount Paid</span><strong id="r-amount"></strong></div>
+          <div class="row"><span>Date</span><strong id="r-date"></strong></div>
+          <div class="row"><span>Event</span><strong id="r-event"></strong></div>
+          <div class="row"><span>Received by</span><strong id="r-received"></strong></div>
+        </div>
+        <div class="receipt-footer">
+          <button type="button" class="secondary" onclick="window.print()">Print / Save</button>
+          <button type="button" class="primary" data-back="lookup">Done</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
